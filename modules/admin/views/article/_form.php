@@ -19,8 +19,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'date')->textInput() ?>
 
-    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'tag')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'viewed')->textInput() ?>

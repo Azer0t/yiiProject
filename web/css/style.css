@@ -211,25 +211,7 @@ span, p, input {
     transition: transform 0.3s ease;
 }
 
-.popular-img:hover img {
-    transform: scale(1.05);
-}
 
-.p-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    transition: opacity 0.4s;
-    border-radius: 6px;
-}
-
-.popular-img:hover .p-overlay {
-    opacity: 1;
-}
 
 .p-content a {
     font-size: 14px;
@@ -249,7 +231,6 @@ span, p, input {
     font-size: 12px;
     font-style: italic;
 }
-
 .leave-comment {
     background-color: #ffffff;
     margin: 30px 0;
@@ -412,4 +393,85 @@ i.fa.fa-trash:hover {
     padding: 15px;
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.widget ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.widget.border ul li:first-child {
+    padding-top: 0;
+}
+
+.widget.border ul li {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 8px 0 8px 16px;
+    position: relative;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+.widget.border ul li:hover {
+    background-color: #f5f5f5;
+}
+
+.widget ul li a {
+    line-height: 28px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #323232;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Merriweather', serif;
+    transition: color 0.3s ease;
+}
+
+.widget ul li a:hover {
+    color: #007ACC;
+    text-decoration: underline;
+}
+
+.post-list .post-content {
+    padding: 0 20px 0 0;
+    overflow: hidden;
+}
+
+.post-list .entry-header {
+    margin: 24px 0;
+}
+
+.entry-header h6 a {
+    color: #00acdf;
+    font-weight: 700;
+    font-size: 12px; /* Увеличен размер шрифта для лучшей читабельности */
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.entry-header h6 a:hover {
+    color: #007ACC; /* Цвет при наведении */
+}
+
+.entry-header h1 a, .entry-header h6 a {
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.post-grid .entry-header h1, .post-list .entry-header h1 {
+    margin: 0;
+    line-height: 1.4; /* Используем более гибкий line-height для улучшенной читаемости */
+}
+
+.post-grid .entry-header h1 a, .post-list .entry-header h1 a {
+    font-size: 20px; /* Увеличен размер шрифта заголовков */
+    font-weight: 600;
+    line-height: 1.5;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.post-grid .entry-header h1 a:hover, .post-list .entry-header h1 a:hover {
+    color: #005f99; /* Добавлен эффект при наведении */
 }
