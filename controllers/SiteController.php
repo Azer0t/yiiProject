@@ -63,7 +63,10 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
-
+    public function actionView()
+    {
+        return $this->render('single');
+    }
     /**
      * Login action.
      *
