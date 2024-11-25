@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\Article;
+use app\models\Comment;
+use app\models\CommentForm;
 use app\models\Topic;
 use Yii;
 use yii\data\Pagination;
@@ -114,7 +116,22 @@ class SiteController extends Controller
 
         $topics = Topic::find()->all();
 
+        $comments = $article->comments;
 
+        $commentsParent = array_filter($comments, function ($k) {
+
+            return $k['comment_id'] == null;
+
+        });
+
+        $commentsChild = array_filter($comments, function ($k) {
+
+            return ($k['comment_id'] != null && !$k['delete']);
+
+        });
+
+        $commentForm = new CommentForm();
+        $article->viewedCounter();
         return $this->render('single', [
 
             'article' => $article,
@@ -124,6 +141,12 @@ class SiteController extends Controller
             'recent' => $recent,
 
             'topics' => $topics,
+
+            'commentsParent' => $commentsParent,
+
+            'commentsChild' => $commentsChild,
+
+            'commentForm' => $commentForm,
         ]);
     }
 
@@ -156,6 +179,7 @@ class SiteController extends Controller
 
         $topics = Topic::find()->all();
 
+
         return $this->render('topic', [
 
             'articles' => $articles,
@@ -171,56 +195,50 @@ class SiteController extends Controller
         ]);
 
     }
-    /**
-     * Login action.
-     *
-     * @return Response|string
-     */
-    public function actionLogin()
-    {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-
-        $model->password = '';
-        return $this->render('login', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Logout action.
-     *
-     * @return Response
-     */
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
-        return $this->goHome();
+        return $this->goHome(); // Перенаправление на главную страницу
     }
 
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-    public function actionContact()
+    public function actionComment($id, $id_comment = null)
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
 
-            return $this->refresh();
+        $model = new CommentForm();
+
+        if (Yii::$app->request->isPost) {
+
+            $model->load(Yii::$app->request->post());
+
+            if ($model->saveComment($id, $id_comment)) {
+
+                return $this->redirect(['site/view', 'id' => $id]);
+
+            }
+
         }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
+
+    }
+
+    public function actionCommentDelete($id, $id_comment)
+    {
+
+        if (Yii::$app->request->isPost) {
+
+            $data = Comment::findOne($id_comment);
+
+            if ($data->user_id == Yii::$app->user->id) {
+
+                $data->delete = true;
+
+                $data->save(false);
+
+            }
+
+            return $this->redirect(['site/view', 'id' => $id]);
+
+        }
+
     }
 
     /**

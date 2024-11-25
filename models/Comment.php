@@ -44,7 +44,10 @@ class Comment extends \yii\db\ActiveRecord
             [['comment_id'], 'exist', 'skipOnError' => true, 'targetClass' => Comment::class, 'targetAttribute' => ['comment_id' => 'id']],
         ];
     }
-
+    public function getDate()
+    {
+        return Yii::$app->formatter->asDate($this->date);
+    }
     /**
      * {@inheritdoc}
      */
