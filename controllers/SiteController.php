@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Article;
 use app\models\Comment;
 use app\models\CommentForm;
+use app\models\SearchForm;
 use app\models\Topic;
 use Yii;
 use yii\data\Pagination;
@@ -17,9 +18,6 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
     public function behaviors()
     {
         return [
@@ -43,9 +41,6 @@ class SiteController extends Controller
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function actions()
     {
         return [
@@ -59,52 +54,37 @@ class SiteController extends Controller
         ];
     }
 
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
     public function actionIndex()
     {
-
-        // build a DB query to get all articles
-
         $query = Article::find();
-
-// get the total number of articles (but do not fetch the article data yet)
 
         $count = $query->count();
 
-// create a pagination object with the total count
-
-        $pagination = new Pagination(['totalCount' => $count, 'pageSize'=> 1]);
-
-// limit the query using the pagination and retrieve the articles
+        $pagination = new Pagination(['totalCount' => $count, 'pageSize' => 2]);
 
         $articles = $query->offset($pagination->offset)
-
             ->limit($pagination->limit)
-
             ->all();
 
-        $popular = Article::find()->orderBy('viewed desc')->limit(3)->all();
+        $popular = Article::find()->orderBy('viewed desc')->limit(1)->all();
 
-        $recent = Article::find()->orderBy('date desc')->limit(3)->all();
+        $recent = Article::find()->orderBy('date desc')->limit(1)->all();
 
         $topics = Topic::find()->all();
 
-        return $this->render('index',[
+        return $this->render('index', [
 
-            'articles'=>$articles,
+            'articles' => $articles,
             'popular' => $popular,
 
             'recent' => $recent,
 
             'topics' => $topics,
-            'pagination'=>$pagination
+            'pagination' => $pagination
 
         ]);
     }
+
     public function actionView($id)
     {
 
@@ -153,7 +133,7 @@ class SiteController extends Controller
     public function actionTopic($id)
     {
 
-        $query = Article::find()->where(['topic_id'=>$id]);
+        $query = Article::find()->where(['topic_id' => $id]);
 
 
         $count = $query->count();
@@ -167,9 +147,7 @@ class SiteController extends Controller
         // limit the query using the pagination and retrieve the articles
 
         $articles = $query->offset($pagination->offset)
-
             ->limit($pagination->limit)
-
             ->all();
 
 
@@ -195,6 +173,7 @@ class SiteController extends Controller
         ]);
 
     }
+
     public function actionLogout()
     {
         Yii::$app->user->logout();
@@ -241,11 +220,44 @@ class SiteController extends Controller
 
     }
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
+    public function actionSearch()
+
+    {
+
+        $model = new SearchForm();
+
+        if (Yii::$app->request->isGet) {
+
+            $model->load(Yii::$app->request->get());
+
+            $data = $model->SearchAtricle(3);
+
+            $popular = Article::find()->orderBy('viewed desc')->limit(3)->all();
+
+            $recent = Article::find()->orderBy('date desc')->limit(3)->all();
+
+            $topics = Topic::find()->all();
+
+            return $this->render('search', [
+
+                'articles' => $data['articles'],
+
+                'pagination' => $data['pagination'],
+
+                'popular' => $popular,
+
+                'recent' => $recent,
+
+                'topics' => $topics,
+
+                'search' => $model->text
+
+            ]);
+
+        }
+
+    }
+
     public function actionAbout()
     {
         return $this->render('about');

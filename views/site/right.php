@@ -1,6 +1,15 @@
 <?php use yii\helpers\Url; ?>
 <div class="col-md-4" data-sticky_column>
     <div class="primary-sidebar">
+        <aside class="border pos-padding widget-search">
+            <?php $form = \yii\widgets\ActiveForm::begin([
+                'method' => 'get',
+                'action' => Url::to(['site/search']),
+                'options' => ['class' => 'search-form', 'role' => 'form']]) ?>
+            <?php $searchForm = new \app\models\SearchForm() ?>
+            <?= $form->field($searchForm, 'text')->textInput(['class' => 'form-control serch', 'placeholder' => 'Search'])->label(false) ?>
+            <?php \yii\widgets\ActiveForm::end() ?>
+        </aside>
         <aside class="widget">
             <h3 class="widget-title text-uppercase text-center">Popular Posts</h3>
             <?php foreach ($popular as $article) : ?>
@@ -38,25 +47,15 @@
             <?php endforeach; ?>
         </aside>
         <aside class="widget border pos-padding">
-
             <h3 class="widget-title text-uppercase text-center">Categories</h3>
-
             <ul>
-
                 <?php foreach ($topics as $topic): ?>
-
                     <li>
-
                         <a href="<?= Url::toRoute(['/topic', 'id' => $topic->id]) ?>"><?= $topic->name; ?></a>
-
                         <span class="post-count pull-right"> (<?= $topic->getArticles()->count(); ?>)</span>
-
                     </li>
-
                 <?php endforeach; ?>
-
             </ul>
-
         </aside>
     </div>
 </div>

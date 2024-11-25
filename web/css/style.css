@@ -475,3 +475,29 @@ i.fa.fa-trash:hover {
 .post-grid .entry-header h1 a:hover, .post-list .entry-header h1 a:hover {
     color: #005f99; /* Добавлен эффект при наведении */
 }
+.search-form {
+    height: 70px; /* Уменьшенная высота для пропорциональности */
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+}
+
+.form-group.field-searchform-text.required {
+    font-size: 16px;
+    font-family: 'Merriweather', serif;
+    color: #333;
+    width: 80%;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group.field-searchform-text.required:focus {
+    border-color: #007ACC;
+    outline: none;
+}
+
