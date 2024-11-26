@@ -7,11 +7,11 @@
                 'action' => Url::to(['site/search']),
                 'options' => ['class' => 'search-form', 'role' => 'form']]) ?>
             <?php $searchForm = new \app\models\SearchForm() ?>
-            <?= $form->field($searchForm, 'text')->textInput(['class' => 'form-control serch', 'placeholder' => 'Search'])->label(false) ?>
+            <?= $form->field($searchForm, 'text')->textInput(['class' => 'form-control serch', 'placeholder' => 'Пошук'])->label(false) ?>
             <?php \yii\widgets\ActiveForm::end() ?>
         </aside>
         <aside class="widget">
-            <h3 class="widget-title text-uppercase text-center">Popular Posts</h3>
+            <h3 class="widget-title text-uppercase text-center">Популярні публікації</h3>
             <?php foreach ($popular as $article) : ?>
                 <div class="popular-post">
                     <a href="<?= Url::toRoute(['/view', 'id' => $article->id]) ?>" class="popular-img">
@@ -28,7 +28,7 @@
         </aside>
         <aside class="widget pos-padding">
             <?php foreach ($recent as $article) : ?>
-                <h3 class="widget-title text-uppercase text-center">Recent Posts</h3>
+                <h3 class="widget-title text-uppercase text-center">Останні публікації</h3>
                 <div class="thumb-latest-posts">
                     <div class="media">
                         <div class="media-left">
@@ -47,7 +47,7 @@
             <?php endforeach; ?>
         </aside>
         <aside class="widget border pos-padding">
-            <h3 class="widget-title text-uppercase text-center">Categories</h3>
+            <h3 class="widget-title text-uppercase text-center">Категорії</h3>
             <ul>
                 <?php foreach ($topics as $topic): ?>
                     <li>

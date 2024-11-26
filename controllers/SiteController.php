@@ -90,9 +90,9 @@ class SiteController extends Controller
 
         $article = Article::findOne($id);
 
-        $popular = Article::find()->orderBy('viewed desc')->limit(3)->all();
+        $popular = Article::find()->orderBy('viewed desc')->limit(1)->all();
 
-        $recent = Article::find()->orderBy('date desc')->limit(3)->all();
+        $recent = Article::find()->orderBy('date desc')->limit(1)->all();
 
         $topics = Topic::find()->all();
 
@@ -141,7 +141,7 @@ class SiteController extends Controller
 
         // create a pagination object with the total count
 
-        $pagination = new Pagination(['totalCount' => $count, 'pageSize' => 1]);
+        $pagination = new Pagination(['totalCount' => $count, 'pageSize' => 2]);
 
 
         // limit the query using the pagination and retrieve the articles
@@ -151,9 +151,9 @@ class SiteController extends Controller
             ->all();
 
 
-        $popular = Article::find()->orderBy('viewed desc')->limit(3)->all();
+        $popular = Article::find()->orderBy('viewed desc')->limit(1)->all();
 
-        $recent = Article::find()->orderBy('date desc')->limit(3)->all();
+        $recent = Article::find()->orderBy('date desc')->limit(1)->all();
 
         $topics = Topic::find()->all();
 
@@ -232,9 +232,9 @@ class SiteController extends Controller
 
             $data = $model->SearchAtricle(3);
 
-            $popular = Article::find()->orderBy('viewed desc')->limit(3)->all();
+            $popular = Article::find()->orderBy('viewed desc')->limit(1)->all();
 
-            $recent = Article::find()->orderBy('date desc')->limit(3)->all();
+            $recent = Article::find()->orderBy('date desc')->limit(1)->all();
 
             $topics = Topic::find()->all();
 
@@ -256,10 +256,5 @@ class SiteController extends Controller
 
         }
 
-    }
-
-    public function actionAbout()
-    {
-        return $this->render('about');
     }
 }

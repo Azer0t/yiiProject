@@ -157,6 +157,7 @@ class UserController extends Controller
         $model = new ImageUpload();
 
         if (Yii::$app->request->isPost) {
+            $this->check($id);
             $article = $this->findModel($id);
 
             $file = UploadedFile::getInstance($model, 'image');
@@ -164,6 +165,7 @@ class UserController extends Controller
                 return $this->redirect(['view', 'id' => $article->id]);
             };
         }
+
 
         return $this->render('image',['model'=>$model]);
     }

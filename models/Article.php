@@ -148,7 +148,7 @@ class Article extends \yii\db\ActiveRecord
             return '/uploads/' . $this->image;
 
         }
-        return '/no-image.png';
+        return '@web/noimage.png';
     }
     public function getDate(){
 

@@ -81,14 +81,17 @@ class ArticleController extends Controller
     /**
      * Creates a new Article model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return string|\yii\web\Response
+     * @param int $id ID
+     *
+     *@return string|\yii\web\Response
      */
     public function actionCreate()
     {
+
         $model = new Article();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if ($model->load($this->request->post()) && $model->saveArticle()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -103,7 +106,6 @@ class ArticleController extends Controller
     /**
      * Updates an existing Article model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id ID
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -112,7 +114,7 @@ class ArticleController extends Controller
         $this->check($id);
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->saveArticle()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -158,6 +160,7 @@ class ArticleController extends Controller
         $model = new ImageUpload();
 
         if (Yii::$app->request->isPost) {
+            $this->check($id);
             $article = $this->findModel($id);
 
             $file = UploadedFile::getInstance($model, 'image');

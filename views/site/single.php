@@ -49,7 +49,7 @@ use yii\helpers\Url;
 
                 <div class="social-share">
 
-                    <span class="social-share-title pull-left text-capitalize">By <?= $article->user->name; ?> On <?= $article->getDate(); ?></span>
+                    <span class="social-share-title pull-left text-capitalize">Створено <?= $article->user->name; ?> Дата: <?= $article->getDate(); ?></span>
 
                     <ul class="text-center pull-right">
 
@@ -92,7 +92,7 @@ use yii\helpers\Url;
 
             <div class="leave-comment"><!--leave comment-->
 
-                <h4>Leave a reply</h4>
+                <h4>Залишити коментар</h4>
 
                 <form class="form-horizontal contact-form" role="form" method="post" action="#">
 
@@ -101,13 +101,13 @@ use yii\helpers\Url;
                         <div class="col-md-12">
 
                             <?= $form->field($commentForm, 'comment')->textarea(['class' => 'form-control',
-                                'placeholder' => 'Write Message'])->label(false) ?>
+                                'placeholder' => 'Напишіть повідомлення'])->label(false) ?>
 
                         </div>
 
                     </div>
 
-                    <button type="submit" class="btn send-btn">Post Comment</button>
+                    <button type="submit" class="btn send-btn">Відправити</button>
 
                     <?php \yii\widgets\ActiveForm::end() ?>
 
@@ -131,7 +131,7 @@ use yii\helpers\Url;
 
                         <a href="#" class="comment-img">
 
-                            <img class="img-round" src="<?= $comment->user->getImage(); ?>" alt="">
+                            <img class="img-round" src="<?= $comment->user->getImage(); ?>" alt="Image">
 
                         </a>
 
@@ -141,7 +141,7 @@ use yii\helpers\Url;
 
                                 <?php if (!Yii::$app->user->isGuest): ?>
 
-                                    <button class="replay btn pull-right" onclick="ShowReplay(this)"> Replay
+                                    <button class="replay btn pull-right" onclick="ShowReplay(this)"> Відповісти
 
                                     </button>
 
@@ -197,7 +197,7 @@ use yii\helpers\Url;
 
                             <a href="#" class="comment-img">
 
-                                <img class="img-round" src="<?= $comment->user->getImage(); ?>" alt="">
+                                <img class="img-round" src="<?= $comment->user->getImage(); ?>" alt="Image">
 
                             </a>
 
@@ -217,7 +217,7 @@ use yii\helpers\Url;
 
                                 <div class="comment-text">
 
-                                    Comment delete
+                                    Видалити коментар
 
                                 </div>
 
@@ -241,20 +241,20 @@ use yii\helpers\Url;
 
                         <div class="leave-comment-child"><!--leave comment-->
 
-                            <h4>Leave a reply for <?= $comment->user->name; ?></h4>
+                            <h4>Залишити коментар <?= $comment->user->name; ?></h4>
 
                             <div class="form-group">
 
                                 <div class="col-md-12">
 
                                     <?= $form->field($commentForm, 'comment')->textarea(['class' => 'form-control',
-                                        'placeholder' => 'Write Message'])->label(false) ?>
+                                        'placeholder' => 'Напишіть повідомлення'])->label(false) ?>
 
                                 </div>
 
                             </div>
 
-                            <button type="submit" class="btn send-btn">Post Comment</button>
+                            <button type="submit" class="btn send-btn">Відправити</button>
 
                             <?php \yii\widgets\ActiveForm::end() ?>
 

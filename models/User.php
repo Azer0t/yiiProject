@@ -104,7 +104,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
         }
 
-        return '/no-image.png';
+        return '@web/noimage.png';
 
     }
 

@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var app\models\TopicSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Topics';
+$this->title = 'Категорії';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="topic-index">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Topic', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Створити категорію', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

@@ -1,11 +1,13 @@
 <?php
 
+use app\models\Topic;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
 /** @var app\models\Article $model */
 
-$this->title = 'Update Article: ' . $model->title;
+$this->title = 'Оновити публікацію: ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Articles', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
@@ -16,6 +18,7 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'topics' => ArrayHelper::map(Topic::find()->all(),'id','name'),
     ]) ?>
 
 </div>

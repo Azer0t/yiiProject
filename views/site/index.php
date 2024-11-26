@@ -16,11 +16,11 @@
                 <div class="entry-content">
                     <p> <?= mb_strimwidth($article->description,0, 360, "..."); ?> </p>
                     <div class="btn-continue-reading text-center text-uppercase">
-                        <a href="<?= Url::toRoute(['/view', 'id'=>$article->id]) ?>" class="more-link">Continue Reading</a>
+                        <a href="<?= Url::toRoute(['/view', 'id'=>$article->id]) ?>" class="more-link">Продовжити читання</a>
                     </div>
                 </div>
                 <div class="social-share">
-                    <span class="social-share-title pull-left text-capitalize">By <?= $article->user->name;?> On <?= $article->getDate();?></span>
+                    <span class="social-share-title pull-left text-capitalize">Створено <?= $article->user->name;?> Дата: <?= $article->getDate();?></span>
                     <ul class="text-center pull-right">
                         <li><a class="s-facebook" href="#"><i class="fa fa-eye"></i></a></li>
                         <?= (int)$article->viewed; ?>

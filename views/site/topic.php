@@ -49,7 +49,7 @@ use yii\widgets\LinkPager;
 
                             <div class="social-share">
 
-                            <span class="social-share-title pull-left text-capitalize">By <?= $article->user->name; ?> On
+                            <span class="social-share-title pull-left text-capitalize">Створено <?= $article->user->name; ?> Дата:
 <?= $article->getDate(); ?></span>
 
                             </div>

@@ -36,17 +36,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
     ]); ?>
 
-    <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
+    <?= $form->field($model, 'name') ->label('Ім`я користувача')->textInput(['autofocus' => true]) ?>
 
-    <?= $form->field($model, 'login')->textInput() ?>
+    <?= $form->field($model, 'login') ->label('Пошта')->textInput() ?>
 
-    <?= $form->field($model, 'password')->passwordInput() ?>
+    <?= $form->field($model, 'password') ->label('Пароль')->passwordInput() ?>
 
     <div class="form-group">
 
         <div class="col-lg-offset-1 col-lg-11">
 
-            <?= Html::submitButton(' Signup ', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+            <?= Html::submitButton(' Зареєструватись ', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
 
         </div>
 

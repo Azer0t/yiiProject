@@ -8,7 +8,7 @@
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 
-$this->title = 'Login';
+$this->title = 'Авторизація';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
@@ -27,18 +27,22 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
             ]); ?>
 
-            <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+            <?= $form->field($model, 'username')
+                ->label('Пошта')  // Задание кастомной метки для поля 'username'
+                ->textInput(['autofocus' => true]) ?>
 
-            <?= $form->field($model, 'password')->passwordInput() ?>
+            <?= $form->field($model, 'password')
+                ->label('Пароль')  // Задание кастомной метки для поля 'password'
+                ->passwordInput() ?>
 
-            <?= $form->field($model, 'rememberMe')->checkbox([
-                'template' => "<div class=\"custom-control custom-checkbox\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            ]) ?>
+            <?= $form->field($model, 'rememberMe')
+                ->label('Remember me')  // Задание кастомной метки для поля 'rememberMe'
+                ->checkbox() ?>
 
             <div class="form-group">
                 <div>
-                    <?= Html::a('Register', ['/auth/signup'], ['class'=>'btn btn-success'])?>
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    <?= Html::submitButton('Авторизація', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    <?= Html::a('Реєстрація', ['/auth/signup'], ['class'=>'btn btn-success'])?>
                 </div>
             </div>
 
