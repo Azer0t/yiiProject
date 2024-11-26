@@ -32,14 +32,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'description:ntext',
             'date',
             [
-                'format' => 'html',
-
-                'label' => 'Image',
-
+                'format' => 'html',  // Указываем формат как HTML
+                'label' => 'Image',  // Подпись для изображения
                 'value' => function ($data) {
-
-                    return Html::img($data->getImage(), ['width' => 200]);
-
+                    // Используем Yii::getAlias('@web'), чтобы правильно формировать URL
+                    return '<img src="' . Yii::getAlias('@web/' . $data->getImage()) . '" width="200" height="150" alt="Image description">';
                 }
             ],
             [

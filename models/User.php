@@ -100,13 +100,14 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
         {
 
-            return '/uploads/' . $this->image;
+            return 'web/image/' . $this->image;
 
         }
 
-        return '@web/noimage.png';
+        return 'web/noimage.png';
 
     }
+
 
     public function deleteImage()
 

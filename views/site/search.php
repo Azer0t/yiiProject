@@ -20,9 +20,10 @@ use yii\widgets\LinkPager;
 
                 <div class="post-thumb">
 
-                    <a href="<?= Url::toRoute(['/view', 'id' => $article->id]) ?>"><img class="img-index"
-                                                                                        src="<?= $article->getImage() ?>"
-                                                                                        alt=""></a>
+                    <a href="<?= Url::toRoute(['/view', 'id' => $article->id]) ?>">
+                        <img class="img-index" src="<?= $article->getImage()?>" alt="Article Image">
+                    </a>
+
 
                 </div>
 

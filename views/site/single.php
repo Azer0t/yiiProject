@@ -10,7 +10,7 @@ use yii\helpers\Url;
             <div class="post-thumb">
 
                 <a href="blog.html">
-                    <img src="<?= $article->getImage() ?>" alt=" image">
+                    <img class="img-index" src="<?= $article->getImage() ?> " alt="Image">
                 </a>
 
             </div>

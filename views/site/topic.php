@@ -19,7 +19,7 @@ use yii\widgets\LinkPager;
                         <div class="post-thumb">
 
                             <a href="<?= Url::toRoute(['/view', 'id'=>$article->id]) ?>">
-                                <img class="img-topic" src="<?= $article->getImage() ?>" alt="" class="pull-left"></a>
+                                <img class="img-topic" src="<?= $article->getImage()?>" alt="" class="pull-left"></a>
 
                         </div>
 

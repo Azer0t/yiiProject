@@ -142,13 +142,20 @@ class Article extends \yii\db\ActiveRecord
 
         return parent::beforeDelete();
     }
-    public function getImage(){
-        if($this->image){
+    public function getImage()
 
-            return '/uploads/' . $this->image;
+    {
+
+        if($this->image)
+
+        {
+
+            return 'web/image/' . $this->image;
 
         }
-        return '@web/noimage.png';
+
+        return 'web/noimage.png';
+
     }
     public function getDate(){
 
